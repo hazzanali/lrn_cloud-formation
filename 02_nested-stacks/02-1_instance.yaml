@@ -43,6 +43,15 @@ Resources:
       ToPort: 5432
       SourceSecurityGroupId: !Ref DbSecurityGroup
 
+  SGDbIngressAlt:
+    Type: 'AWS::EC2::SecurityGroupIngress'
+    Properties:
+      GroupId: !Ref DbSecurityGroup
+      IpProtocol: tcp
+      FromPort: 22
+      ToPort: 22
+      SourceSecurityGroupId: !Ref DbSecurityGroup
+
   SGDbIngress2:
     Type: 'AWS::EC2::SecurityGroupIngress'
     Properties:
@@ -59,7 +68,7 @@ Resources:
     Properties:
       AllocatedStorage: !If [ProductionEnvironment, "20", "20"]
       BackupRetentionPeriod: !If [ProductionEnvironment, 30, 7]
-      DBInstanceClass: !If [ProductionEnvironment, "db.t2.micro", "db.t2.micro"]  
+      DBInstanceClass: !If [ProductionEnvironment, "db.t2.small", "db.t2.small"] #t2.micro encryption not supported
       DBInstanceIdentifier: !Sub ${ProjectName}-${Environment}-Db
       DBName: demo
       DBSubnetGroupName:
@@ -177,6 +186,3 @@ Outputs:
     Value: !GetAtt Database.Endpoint.Address
     Export: 
       Name: !Sub ${ProjectName}-${Environment}-DatabaseEndpoint
-  Changelog:
-    Value: !Ref Changelog
-    Description: Describe changes to this stack

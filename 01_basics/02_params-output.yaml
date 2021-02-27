@@ -51,7 +51,7 @@ Parameters:
     MaxLength: 41
     AllowedPattern: '[a-zA-Z0-9]*'
     ConstraintDescription: Must contain only alphanumeric characters
-  DBRootPassword
+  DBRootPassword:
     NoEcho: 'true'
     Description: 'The MYSQL root password'
     Type: String
