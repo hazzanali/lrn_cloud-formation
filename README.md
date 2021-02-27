@@ -24,7 +24,7 @@ A bare-minimum CloudFormation template must contain atleast the Resources.
     WebServer:
         Type: AWS::EC2::Instance
         Metadata:
-            'AWS::CloudFormation::Init'	:
+            'AWS::CloudFormation::Init':
                 configSets:
                 wordpress_install:
                 - install_cfn
