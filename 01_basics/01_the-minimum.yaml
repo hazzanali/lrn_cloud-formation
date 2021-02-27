@@ -1,0 +1,26 @@
+Resources:
+  WebServer:
+      Type: AWS::EC2::Instance
+      Properties:
+        ImageId: ami-047a51fa27710816e
+        InstanceType: t2.small
+        SecurityGroups:
+          - !Ref WebServerSecurityGroup
+        KeyName: ec2-base-key
+      Metadata:
+        Instance:
+          Description: A sample EC2 instance
+  WebServerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: >-
+        Enable HTTP access via port 80 and SSH at 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
