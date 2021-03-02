@@ -50,10 +50,26 @@ A bare-minimum CloudFormation template must contain atleast the Resources.
             ConstraintDescription: Must be a valid EC2 instance type.
     ```
 
-    Creating constraints can be achieved using the following
-    - *AllowedValues* - a list/array of allowed values that can be choosen from a dropdown.
-    - *AllowedPattern* - can write regular expression to guard the input.
-    - *ConstraintDescription* - the text to be displayed when constraints aren't met.
+    Creating check-constraints can be achieved using the following
+    - **AllowedValues** - a list/array of allowed values that can be choosen from a dropdown.
+    - **AllowedPattern** - can write regular expression to guard the input.
+    - **Length validation** -  MinLength and MaxLength
+    - **Range Validation** - MinValue and MaxValue
+    - **ConstraintDescription** - the text to be displayed when constraints aren't met.
+
+    Types of parameter
+    - **String** - A string literal.
+    - **Number** - Number, int or float. Becomes a string when referenced in the template.
+    - **CommaDelimitedList** - Array of strings.
+    - **List&lt;Number&gt;** - Array of numbers.
+    - **AWS specific parameters** - Special AWS values such as EC2 SSH KeyPairs and VPC IDs. 
+        ```YAML
+        Parameters:
+            SSHKey:
+                Description: EC2 SSH key
+                Type: AWS::EC2::KeyPair::KeyName
+                ConstraintDescription: Must be a valid KeyPair.
+        ```
 
 1. **Mappings** - are similar to a lookup/dictionary of object values. It needs a Key and Name-Value pair. 200 mappings is the upperlimit supported by CloudFormation. To access mapping use the in-built function `!FindInMap[MappingDemon, KeyOne, NameAlt]`
 
