@@ -17,5 +17,5 @@ There are two ways to run the nested stack sample;
    ```
 1. Complete the proces by running the below command
    ```bash
-   aws cloudformation deploy --template-file /home/hman/learning/lrn_cloud-formation/02_nested-stacks/01_parent-packaged.yaml --stack-name tempa-nested --parameter-overrides ProjectName=nestedproj Environment=Dev
+   aws cloudformation deploy --template-file 01_parent-packaged.yaml --stack-name tempa-nested --parameter-overrides ProjectName=nestedproj Environment=Dev --capabilities CAPABILITY_IAM
    ```

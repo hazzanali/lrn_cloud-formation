@@ -200,7 +200,7 @@ With notification options you can create a topic within AWS SNS to send notifica
 ## Rollback on failure
 Toggle that controls whether the stack should be rolled back if stack creation fails.
 
-## Terminiation protection
+## Termination protection
 Toggle that protects stacks from being accidently deleted. When enabled the user is shown a dialog that tell the user that Termination protection has been enabled.
 
 ## Cancelling an update
