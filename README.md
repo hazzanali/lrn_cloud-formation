@@ -104,8 +104,15 @@ A bare-minimum CloudFormation template must contain atleast the Resources.
             - PublicDnsName
             - /wordpress
         Description: Wordpress Website URL
+        Export:
+            Name: !Sub ${AWS::StackName}-WP-URL
     ```
-    The outputs can be exported for wider use across many stacks.However, once exported, they cannot be modified or deleted until all the reference to other stacks are terminated. 
+    
+    *The outputs can be exported* for wider use across many stacks within the same region. A stack whose output has been imported cannot be deleted until the references are broken and the value cannot be modified or removed. 
+    ```YAML
+    Fn::ImportValue: sharedValueToImport
+    ```
+    
 
 # Methods to update CloudFormation
 There are two methods to update stacks in CloudFormation; direct updates and change sets.
