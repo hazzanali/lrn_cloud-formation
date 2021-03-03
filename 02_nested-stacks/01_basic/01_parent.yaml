@@ -45,7 +45,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     DependsOn: NetworkingStack
     Properties: 
-      TemplateURL: ./02-1_instance.yaml
+      TemplateURL: ./02-2_instance.yaml
       Parameters: 
         ProjectName: !Ref ProjectName
         Environment: !Ref Environment
